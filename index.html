@@ -10,11 +10,13 @@
 <helmet>
 <link rel="stylesheet" href="_ds/broadsheet-591e7df8-8041-4f2b-9beb-f8d668c3c9e7/styles.css">
 <script src="_ds/broadsheet-591e7df8-8041-4f2b-9beb-f8d668c3c9e7/_ds_bundle.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Lora:ital,wght@0,400;0,500;1,400&amp;family=DM+Sans:wght@500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:104px}
+@media (max-width:900px){section[id]{scroll-margin-top:88px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media (max-width:900px){
   header{padding-left:22px !important;padding-right:22px !important}
   main section{padding-left:22px !important;padding-right:22px !important;grid-template-columns:1fr !important;gap:40px !important}
@@ -63,15 +65,15 @@ video{will-change:transform}
       <button type="button" onClick="{{ toggleMenu }}" aria-label="Menü schließen" style="background:none;border:none;font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#462518;padding:12px 0;cursor:pointer">Schließen</button>
     </div>
     <nav style="margin:auto 0;display:flex;flex-direction:column;gap:20px">
-      <a href="#" onClick="{{ go11 }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">1:1 Begleitung</a>
+      <a href="#begleitung" onClick="{{ go11 }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">1:1 Begleitung</a>
       <div style="display:flex;flex-direction:column;gap:10px">
         <p style="margin:0;font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518">Chakradance</p>
-        <a href="#" onClick="{{ goCdP }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(24px,5vw,34px);line-height:1.1;color:#462518;padding-left:18px" style-hover="color:#A8322A">Für dich</a>
-        <a href="#" onClick="{{ goCdB }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(24px,5vw,34px);line-height:1.1;color:#462518;padding-left:18px" style-hover="color:#A8322A">Für Ihr Haus</a>
+        <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(24px,5vw,34px);line-height:1.1;color:#462518;padding-left:18px" style-hover="color:#A8322A">Für dich</a>
+        <a href="#fuer-ihr-haus" onClick="{{ goCdB }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(24px,5vw,34px);line-height:1.1;color:#462518;padding-left:18px" style-hover="color:#A8322A">Für Ihr Haus</a>
       </div>
-      <a href="#" onClick="{{ goAbout }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Über mich</a>
-      <a href="#" onClick="{{ goProj }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Projekte</a>
-      <a href="#" onClick="{{ goContact }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Kontakt</a>
+      <a href="#ueber-mich" onClick="{{ goAbout }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Über mich</a>
+      <a href="#projekte" onClick="{{ goProj }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Projekte</a>
+      <a href="#kontakt" onClick="{{ goContact }}" style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,6vw,40px);line-height:1.1;color:#462518" style-hover="color:#A8322A">Kontakt</a>
     </nav>
   </div>
   </sc-if>
@@ -80,19 +82,19 @@ video{will-change:transform}
   <header style="position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid #EFE3CD;display:flex;align-items:baseline;justify-content:space-between;gap:40px;padding:26px 56px;flex-wrap:wrap">
     <a href="#" onClick="{{ goHome }}" aria-label="Laura Reichard – Startseite" style="display:block;width:186px;height:41px;background-color:#462518;-webkit-mask:url(logo.svg) no-repeat left center/contain;mask:url(logo.svg) no-repeat left center/contain;transition:opacity .3s ease" style-hover="opacity:.65"></a>
     <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}"><nav style="display:flex;align-items:center;gap:24px">
-      <a href="#" onClick="{{ go11 }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">1:1 Begleitung</a>
+      <a href="#begleitung" onClick="{{ go11 }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">1:1 Begleitung</a>
       <div style="position:relative;display:flex">
         <button type="button" onClick="{{ toggleSub }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;background:none;border:none;padding:0;min-height:44px;display:flex;align-items:center;cursor:pointer;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Chakradance</button>
         <sc-if value="{{ subOpen }}">
         <div style="position:absolute;top:100%;left:0;min-width:230px;background:#FFFDF8;border:1px solid #F0E4CD;border-radius:8px;padding:8px;display:flex;flex-direction:column;z-index:40">
-          <a href="#" onClick="{{ goCdP }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für dich</a>
-          <a href="#" onClick="{{ goCdB }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für Ihr Haus</a>
+          <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für dich</a>
+          <a href="#fuer-ihr-haus" onClick="{{ goCdB }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für Ihr Haus</a>
         </div>
         </sc-if>
       </div>
-      <a href="#" onClick="{{ goAbout }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">Über mich</a>
-      <a href="#" onClick="{{ goProj }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">Projekte</a>
-      <a href="#" onClick="{{ goContact }}" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:0 24px;min-height:44px;display:flex;align-items:center;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-2px)">Kontakt</a>
+      <a href="#ueber-mich" onClick="{{ goAbout }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">Über mich</a>
+      <a href="#projekte" onClick="{{ goProj }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#633C2B;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#A8322A,#A8322A);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1),color .3s ease" style-hover="background-size:100% 1px;color:#A8322A">Projekte</a>
+      <a href="#kontakt" onClick="{{ goContact }}" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:0 24px;min-height:44px;display:flex;align-items:center;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-2px)">Kontakt</a>
     </nav></sc-if>
     <sc-if value="{{ isNarrow }}"><button type="button" onClick="{{ toggleMenu }}" aria-label="Menü öffnen" style="display:flex;flex-direction:column;justify-content:center;gap:7px;background:none;border:none;padding:10px 4px;min-height:44px;min-width:44px;cursor:pointer">
           <span style="display:block;width:28px;height:1.5px;background:#462518"></span>
@@ -111,19 +113,19 @@ video{will-change:transform}
       <header data-home-header="1" style="position:absolute;top:0;left:0;right:0;z-index:30;display:flex;align-items:flex-start;justify-content:space-between;gap:40px;padding:34px 56px;flex-wrap:wrap">
         <a href="#" onClick="{{ goHome }}" data-logo="1" aria-label="Laura Reichard – Startseite" style="display:block;width:196px;height:44px;background-color:#FBF4E7;-webkit-mask:url(logo.svg) no-repeat left center/contain;mask:url(logo.svg) no-repeat left center/contain;transition:background-color .4s ease,opacity .3s ease" style-hover="opacity:.72"></a>
         <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}"><nav style="display:flex;align-items:center;gap:24px">
-          <a href="#" onClick="{{ go11 }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">1:1 Begleitung</a>
+          <a href="#begleitung" onClick="{{ go11 }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">1:1 Begleitung</a>
           <div style="position:relative;display:flex">
         <button type="button" onClick="{{ toggleSub }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;background:none;border:none;padding:0;min-height:44px;display:flex;align-items:center;cursor:pointer;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Chakradance</button>
         <sc-if value="{{ subOpen }}">
         <div style="position:absolute;top:100%;left:0;min-width:230px;background:#FFFDF8;border:1px solid #F0E4CD;border-radius:8px;padding:8px;display:flex;flex-direction:column;z-index:40">
-          <a href="#" onClick="{{ goCdP }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für dich</a>
-          <a href="#" onClick="{{ goCdB }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für Ihr Haus</a>
+          <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für dich</a>
+          <a href="#fuer-ihr-haus" onClick="{{ goCdB }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;font-size:11.5px;letter-spacing:.16em;color:#462518;padding:14px 16px;border-radius:6px" style-hover="background:#FBF5EA;color:#A8322A">Für Ihr Haus</a>
         </div>
         </sc-if>
       </div>
-          <a href="#" onClick="{{ goAbout }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Über mich</a>
-          <a href="#" onClick="{{ goProj }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Projekte</a>
-          <a href="#" onClick="{{ goContact }}" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#3F1E19;background:#FBF4E7;border-radius:300px;padding:0 24px;min-height:44px;display:flex;align-items:center;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#F2EAE7;transform:translateY(-2px)">Kontakt</a>
+          <a href="#ueber-mich" onClick="{{ goAbout }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Über mich</a>
+          <a href="#projekte" onClick="{{ goProj }}" style="font-family:'DM Sans',sans-serif;font-weight:500;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#FBF4E7;display:flex;align-items:center;min-height:44px;background-image:linear-gradient(#FBF4E7,#FBF4E7);background-repeat:no-repeat;background-position:0 calc(100% - 12px);background-size:0% 1px;transition:background-size .45s cubic-bezier(.2,.7,.2,1)" style-hover="background-size:100% 1px">Projekte</a>
+          <a href="#kontakt" onClick="{{ goContact }}" style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#3F1E19;background:#FBF4E7;border-radius:300px;padding:0 24px;min-height:44px;display:flex;align-items:center;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#F2EAE7;transform:translateY(-2px)">Kontakt</a>
         </nav></sc-if>
         <sc-if value="{{ isNarrow }}"><button type="button" onClick="{{ toggleMenu }}" aria-label="Menü öffnen" data-burger="1" style="display:flex;flex-direction:column;justify-content:center;gap:7px;background:none;border:none;padding:10px 4px;min-height:44px;min-width:44px;cursor:pointer">
           <span style="display:block;width:28px;height:1.5px;background:#FBF4E7"></span>
@@ -166,17 +168,17 @@ video{will-change:transform}
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(34px,4.4vw,64px);line-height:1.1;margin:0">Zwei Wege, <span style="font-style:italic">ein Ziel</span></h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px">
-        <a href="#" onClick="{{ go11 }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
+        <a href="#begleitung" onClick="{{ go11 }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
           <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:31px;line-height:1.22;margin:0;max-width:20ch">1:1 Begleitung und Halten in Lebenskrisen / energetisches Coaching</h3>
           <p style="margin:0;font-size:16.5px;line-height:1.7;color:#633C2B">Für Frauen in echten Lebenskrisen und Wendepunkten. Tiefenarbeit, die trägt – über Wochen und Monate.</p>
           <span style="margin-top:auto;display:flex;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#A8322A">Mehr erfahren <span aria-hidden="true" style="display:block;width:26px;height:1px;background:#A8322A"></span></span>
         </a>
-        <a href="#" onClick="{{ goCdP }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
+        <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
           <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:31px;line-height:1.22;margin:0">Chakradance<span style="font-size:.42em;vertical-align:super;letter-spacing:0">®</span></h3>
           <p style="margin:0;font-size:16.5px;line-height:1.7;color:#633C2B">Deine Reise zurück zu dir – über Musik, Bewegung und innere Wahrnehmung. Für alle, die (wieder) in Kontakt mit sich kommen wollen.</p>
           <span style="margin-top:auto;display:flex;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#A8322A">Mehr erfahren <span aria-hidden="true" style="display:block;width:26px;height:1px;background:#A8322A"></span></span>
         </a>
-        <a href="#" onClick="{{ goProj }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
+        <a href="#projekte" onClick="{{ goProj }}" style="display:flex;flex-direction:column;gap:18px;background:#FBF5EA;border-radius:8px;padding:44px 40px 40px;color:#462518;min-height:290px;transition:background .45s ease,transform .45s cubic-bezier(.2,.7,.2,1)" style-hover="background:#E5CEC0;transform:translateY(-8px)">
           <h3 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:31px;line-height:1.22;margin:0">Weitere Projekte &amp; Kooperationen</h3>
           <p style="margin:0;font-size:16.5px;line-height:1.7;color:#633C2B">Achtsamkeitstage auf dem Pferdehof, ein Format für Paare und wechselnde Kooperationen.</p>
           <span style="margin-top:auto;display:flex;align-items:center;gap:12px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#A8322A">Mehr erfahren <span aria-hidden="true" style="display:block;width:26px;height:1px;background:#A8322A"></span></span>
@@ -193,7 +195,7 @@ video{will-change:transform}
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(32px,4vw,56px);line-height:1.1;margin:0 0 32px;max-width:20ch">Lern mich <span style="font-style:italic">näher</span> kennen</h2>
         <p style="margin:0 0 20px;font-size:17.5px;line-height:1.78;max-width:50ch">Zertifizierte Chakradance<span style="font-size:.42em;vertical-align:super;letter-spacing:0">®</span>-Facilitatorin, Coachin, Mama von drei Kindern in Villingen-Schwenningen – das sind die Etiketten.</p>
         <p style="margin:0 0 38px;font-size:17.5px;line-height:1.78;max-width:50ch">Mein Weg führte vom Eventmanagement in Wien auf eine einsame Berghütte in Vorarlberg und von dort in die Arbeit, die ich heute mache: ein Raum, in dem Frauen sich wieder an ihr Licht erinnern können.</p>
-        <a href="#" onClick="{{ goAbout }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Mehr über mich</a>
+        <a href="#ueber-mich" onClick="{{ goAbout }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Mehr über mich</a>
       </div>
     </section>
 
@@ -216,14 +218,14 @@ video{will-change:transform}
     <section style="background:rgba(255,255,255,.62);padding:clamp(90px,10vw,150px) 32px;margin-bottom:calc(-1 * clamp(100px,11vw,170px));text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 22px">Der erste Schritt</p>
       <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(32px,4.2vw,60px);line-height:1.12;margin:0 auto 32px;max-width:24ch">Ein Erstgespräch, um zu klären, ob wir <span style="font-style:italic">zueinander passen</span>.</h2>
-      <a href="#" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Erstgespräch anfragen</a>
+      <a href="#kontakt" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Erstgespräch anfragen</a>
     </section>
   <div data-grain="1" style="position: absolute; left: -1px; top: -34px"></div></main>
   </sc-if>
 
   <sc-if value="{{ is11 }}">
   <main data-screen-label="1:1 Begleitung">
-    <section style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
+    <section id="begleitung" style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 24px">Einzelbegleitung</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(36px,4.8vw,72px);line-height:1.08;margin:0 auto;max-width:26ch;text-wrap:pretty">1:1 Begleitung und Halten in Lebenskrisen / <span style="font-style:italic">energetisches Coaching</span></h1>
     </section>
@@ -359,14 +361,14 @@ video{will-change:transform}
       </div>
       <div style="background:#F2EAE7;border-radius:8px;padding:38px 36px">
         <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.26em;text-transform:uppercase;color:#8B614F;margin:0 0 18px">Nicht das Richtige?</p>
-        <p style="margin:0;font-size:16px;line-height:1.74;color:#633C2B">Wenn du eher unverbindlich wieder in Kontakt mit dir kommen möchtest, ohne dass ein konkretes Thema dahintersteckt: <a href="#" onClick="{{ goCdP }}" style="color:#A8322A;border-bottom:1px solid #D9BFB0">Chakradance</a> ist dafür der passendere erste Schritt.</p>
+        <p style="margin:0;font-size:16px;line-height:1.74;color:#633C2B">Wenn du eher unverbindlich wieder in Kontakt mit dir kommen möchtest, ohne dass ein konkretes Thema dahintersteckt: <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="color:#A8322A;border-bottom:1px solid #D9BFB0">Chakradance</a> ist dafür der passendere erste Schritt.</p>
       </div>
     </section>
 
     <section style="padding:clamp(80px,9vw,130px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 22px">Nächster Schritt</p>
       <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(30px,3.6vw,52px);line-height:1.14;margin:0 auto 32px;max-width:24ch">Ein Erstgespräch, um zu klären, ob wir <span style="font-style:italic">zueinander passen</span>.</h2>
-      <a href="#" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Erstgespräch anfragen</a>
+      <a href="#kontakt" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Erstgespräch anfragen</a>
     </section>
 
     <section style="margin-top:clamp(90px,10vw,150px);padding:0 32px">
@@ -380,7 +382,7 @@ video{will-change:transform}
 
   <sc-if value="{{ isCdP }}">
   <main data-screen-label="Chakradance – für dich">
-    <section style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
+    <section id="chakradance-fuer-dich" style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 24px">Für dich</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;margin:0 auto 40px;max-width:min(460px,72vw)"><img src="uploads/chakradance_logo.png" alt="Chakradance" style="display:block;width:100%;height:auto"></h1>
       <p style="margin:0 auto;max-width:34ch;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(24px,2.6vw,34px);line-height:1.42;color:#964F39">Eine Reise zurück zu dir – über Musik, Bewegung und innere Wahrnehmung.</p>
@@ -416,8 +418,8 @@ video{will-change:transform}
       </div>
     </section>
 
-    <section style="padding:clamp(80px,9vw,130px) 32px 0;text-align:center">
-      <a href="#" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Kursdaten anfragen</a>
+    <section id="fuer-ihr-haus" style="padding:clamp(80px,9vw,130px) 32px 0;text-align:center">
+      <a href="#kontakt" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Kursdaten anfragen</a>
     </section>
   </main>
   </sc-if>
@@ -458,7 +460,7 @@ video{will-change:transform}
       <div style="background:#F2EAE7;border-radius:8px;padding:clamp(40px,5vw,72px);text-align:center">
         <h2 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(28px,3.2vw,44px);line-height:1.16;margin:0 auto 24px;max-width:26ch">Interesse, das Format kennenzulernen?</h2>
         <p style="margin:0 auto 32px;font-size:17px;line-height:1.78;color:#633C2B;max-width:58ch">Ich stelle Ihnen Chakradance gerne im Detail vor – auch mit Blick auf Ihr bestehendes Konzept, damit wir gemeinsam die passende Form für Ihr Haus finden.</p>
-        <a href="#" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Kontakt aufnehmen</a>
+        <a href="#kontakt" onClick="{{ goContact }}" style="display:inline-block;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border-radius:300px;padding:16px 34px;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Kontakt aufnehmen</a>
       </div>
     </section>
   </main>
@@ -466,7 +468,7 @@ video{will-change:transform}
 
   <sc-if value="{{ isAbout }}">
   <main data-screen-label="Über mich">
-    <section style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
+    <section id="ueber-mich" style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 24px">Wer ich bin</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(36px,4.8vw,74px);line-height:1.06;margin:0 auto;max-width:22ch">Vom Eventmanagement auf eine <span style="font-style:italic">Berghütte</span> – und weiter.</h1>
     </section>
@@ -508,7 +510,7 @@ video{will-change:transform}
 
   <sc-if value="{{ isProj }}">
   <main data-screen-label="Weitere Projekte">
-    <section style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
+    <section id="projekte" style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 24px">Projekte</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(36px,4.8vw,72px);line-height:1.08;margin:0 auto 40px;max-width:22ch">Weitere Projekte &amp; <span style="font-style:italic">Kooperationen</span></h1>
       <p style="margin:0 auto;font-size:18px;line-height:1.8;max-width:60ch">Neben meiner 1:1-Arbeit und Chakradance bin ich Teil einiger Projekte, die mir am Herzen liegen – oft in Zusammenarbeit mit Menschen, die ähnlich denken und fühlen wie ich.</p>
@@ -553,7 +555,7 @@ video{will-change:transform}
 
   <sc-if value="{{ isContact }}">
   <main data-screen-label="Kontakt">
-    <section style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
+    <section id="kontakt" style="padding:clamp(60px,7vw,110px) 32px 0;text-align:center">
       <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#A8322A;margin:0 0 24px">Kontakt</p>
       <h1 style="font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(38px,5vw,76px);line-height:1.06;margin:0 auto 32px;max-width:18ch">Schreib <span style="font-style:italic">mir</span>.</h1>
       <p style="margin:0 auto;font-size:18px;line-height:1.8;max-width:52ch">Am Anfang steht ein Erstgespräch – für die 1:1 Begleitung, für Chakradance oder für eine Zusammenarbeit mit Ihrem Haus.</p>
@@ -569,20 +571,21 @@ video{will-change:transform}
           <a href="https://www.instagram.com/laurareichardcoach/" target="_blank" rel="noopener" style="font-size:17px;color:#A8322A">Instagram</a>
         </div>
       </div>
-      <form style="display:flex;flex-direction:column;gap:22px;max-width:44ch" onSubmit="{{ noSubmit }}">
+      <form id="kontaktformular" novalidate style="display:flex;flex-direction:column;gap:22px;max-width:44ch">
         <label style="display:flex;flex-direction:column;gap:9px">
           <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B614F">Name</span>
-          <input type="text" style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px">
+          <input type="text" id="kf-name" name="name" required autocomplete="name" style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px">
         </label>
         <label style="display:flex;flex-direction:column;gap:9px">
           <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B614F">E-Mail</span>
-          <input type="email" style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px">
+          <input type="email" id="kf-mail" name="email" required autocomplete="email" style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px">
         </label>
         <label style="display:flex;flex-direction:column;gap:9px">
           <span style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#8B614F">Worum geht es?</span>
-          <textarea rows="6" style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px;resize:vertical"></textarea>
+          <textarea rows="6" id="kf-text" name="nachricht" required style="font-family:'Lora',Georgia,serif;font-size:16px;color:#462518;background:#F2EAE7;border:none;border-radius:8px;padding:15px 16px;resize:vertical"></textarea>
         </label>
         <button type="submit" style="align-self:flex-start;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#FBF4E7;background:#A8322A;border:none;border-radius:300px;padding:16px 34px;cursor:pointer;transition:background .35s ease,transform .35s cubic-bezier(.2,.7,.2,1)" style-hover="background:#8A2620;transform:translateY(-3px)">Absenden</button>
+        <p id="kf-status" role="status" aria-live="polite" style="margin:0;font-size:14.5px;line-height:1.7;color:#8B614F;min-height:1.7em"></p>
       </form>
     </section>
   </main>
@@ -597,15 +600,15 @@ video{will-change:transform}
       </div>
       <nav style="display:flex;flex-direction:column;gap:14px">
         <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8B614F;margin:0 0 20px">Angebote</p>
-        <a href="#" onClick="{{ go11 }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">1:1 Begleitung</a>
-        <a href="#" onClick="{{ goCdP }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Chakradance – für dich</a>
-        <a href="#" onClick="{{ goCdB }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Chakradance – für Ihr Haus</a>
+        <a href="#begleitung" onClick="{{ go11 }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">1:1 Begleitung</a>
+        <a href="#chakradance-fuer-dich" onClick="{{ goCdP }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Chakradance – für dich</a>
+        <a href="#fuer-ihr-haus" onClick="{{ goCdB }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Chakradance – für Ihr Haus</a>
       </nav>
       <nav style="display:flex;flex-direction:column;gap:14px">
         <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8B614F;margin:0 0 20px">Mehr</p>
-        <a href="#" onClick="{{ goAbout }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Über mich</a>
-        <a href="#" onClick="{{ goProj }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Projekte &amp; Kooperationen</a>
-        <a href="#" onClick="{{ goContact }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Kontakt</a>
+        <a href="#ueber-mich" onClick="{{ goAbout }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Über mich</a>
+        <a href="#projekte" onClick="{{ goProj }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Projekte &amp; Kooperationen</a>
+        <a href="#kontakt" onClick="{{ goContact }}" style="font-size:15.5px;color:#633C2B;line-height:1.5">Kontakt</a>
       </nav>
       <div style="display:flex;flex-direction:column;gap:14px">
         <p style="font-family:'DM Sans',sans-serif;font-weight:700;font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:#8B614F;margin:0 0 20px">Kontakt</p>
@@ -813,6 +816,41 @@ class Component extends DCLogic {
     };
   }
 }
+</script>
+
+<script>
+(function () {
+  var form = document.getElementById('kontaktformular');
+  if (!form) return;
+  var status = document.getElementById('kf-status');
+  var EMPFAENGER = 'laura.reichard@gmx.at';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = document.getElementById('kf-name').value.trim();
+    var mail = document.getElementById('kf-mail').value.trim();
+    var text = document.getElementById('kf-text').value.trim();
+
+    if (!name || !mail || !text) {
+      status.style.color = '#A8322A';
+      status.textContent = 'Bitte fülle Name, E-Mail und deine Nachricht aus.';
+      return;
+    }
+    if (mail.indexOf('@') < 1 || mail.indexOf('.', mail.indexOf('@')) < 0) {
+      status.style.color = '#A8322A';
+      status.textContent = 'Die E-Mail-Adresse sieht noch nicht vollständig aus.';
+      return;
+    }
+
+    var betreff = 'Anfrage über die Website – ' + name;
+    var koerper = name + ' schreibt:\n\n' + text + '\n\n--\nAntwort bitte an: ' + mail;
+    status.style.color = '#8B614F';
+    status.textContent = 'Dein E-Mail-Programm öffnet sich mit der fertigen Nachricht – bitte dort noch auf Senden klicken.';
+    window.location.href = 'mailto:' + EMPFAENGER +
+      '?subject=' + encodeURIComponent(betreff) +
+      '&body=' + encodeURIComponent(koerper);
+  });
+})();
 </script>
 </body>
 </html>
